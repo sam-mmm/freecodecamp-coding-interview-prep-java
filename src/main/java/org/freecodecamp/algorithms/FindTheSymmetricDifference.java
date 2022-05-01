@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//https://www.freecodecamp.org/learn/coding-interview-prep/algorithms/find-the-symmetric-difference
 public class FindTheSymmetricDifference {
     public int[] sym1(int[]... args) {
         int[] results = Arrays.<int[]>stream(args).reduce((ints1, ints2) -> {
