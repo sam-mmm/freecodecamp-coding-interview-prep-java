@@ -152,8 +152,7 @@ class InventoryUpdateTest {
             var b = cell.getColumnKey();
             var r = cell.getValue();
             var val = iu.updateInventory2(cell.getRowKey(), cell.getColumnKey());
-            System.out.println(r);
-            System.out.println(val);
+
             assertEquals(r.size(), val.size());
 //            assertTrue(equals(r, val));
         });
