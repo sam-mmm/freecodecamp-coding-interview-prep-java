@@ -1,57 +1,46 @@
 package org.freecodecamp.algorithms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class NoRepeatsPlease {
-    public int permAlone(String s) {
-        int count = 0;
-//        // Create a regex to match repeated consecutive characters.
-//        let regex = /(.)\1+/;
-        String regex = "/(.)\1+/";
-//
-//        // Split the string into an array of characters.
-//  const arr = str.split("");
-//  const permutations = [];
-//        let tmp;
-        String arr[] = s.split("");
-        ArrayList<String> permutations = new ArrayList<>();
-        String tmp;
+    ArrayList<String> permutations = new ArrayList<>();
+    String tmp;
 
-//
-//        // Return 0 if str contains same character.
-//        if (str.match(regex) !== null && str.match(regex)[0] === str) return 0;
-//                if (s.match(regex) !== null && str.match(regex)[0] === str) return 0;
-//
-//        // Function to swap variables' content.
-//        function swap(index1, index2) {
-//            tmp = arr[index1];
-//            arr[index1] = arr[index2];
-//            arr[index2] = tmp;
-//        }
-//
-//        // Generate arrays of permutations using the algorithm.
-//        function generate(int) {
-//        if (int === 1) {
-//            // Make sure to join the characters as we create  the permutation arrays
-//            permutations.push(arr.join(""));
-//        } else {
-//            for (let i = 0; i != int; ++i) {
-//                generate(int - 1);
-//                swap(int % 2 ? 0 : i, int - 1);
-//            }
-//        }
-//  }
-//
-//        generate(arr.length);
-//
-//        // Filter the array of repeated permutations.
-//  const filtered = permutations.filter(function(string) {
-//            return !string.match(regex);
-//        });
-//
-//        // Return how many have no repetitions.
-//        return filtered.length;
-        return count;
+    public int permAlone(String s) {
+        String regex = "(.)\\1+";
+        String arr[] = s.split("");
+        Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+        if (pattern.matcher(s).find() && pattern.matcher(s).results().anyMatch(matchResult -> matchResult.toString().equalsIgnoreCase(s)))
+            return 0;
+        generate(arr.length, arr);
+        List filtered = permutations.stream().filter(s1 -> {
+            return !pattern.matcher(s1).find();
+        }).collect(Collectors.toList());
+        return filtered.size();
     }
 
+    private void swap(int index1, int index2, String arr[]) {
+        tmp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = tmp;
+    }
+
+    //        function generate(int) {
+    private void generate(int j, String arr[]) {
+//        if (int === 1) {
+        if (j == 1) {
+//            // Make sure to join the characters as we create  the permutation arrays
+//            permutations.push(arr.join(""));
+            permutations.add(Arrays.stream(arr).collect(Collectors.joining("")));
+        } else {
+            for (int i = 0; i != j; ++i) {
+                generate(j - 1, arr);
+                swap(j % 2 == 0 ? 0 : i, j - 1, arr);
+            }
+        }
+    }
 }

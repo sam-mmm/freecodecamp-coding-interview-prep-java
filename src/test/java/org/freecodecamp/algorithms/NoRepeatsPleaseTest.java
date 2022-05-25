@@ -12,22 +12,30 @@ class NoRepeatsPleaseTest {
 //        permAlone("aab") should return a number.
 //        assertEquals(a.permAlone("aab"));
 //                permAlone("aab") should return 2.
-        assertEquals(a.permAlone("aab"), 2);
+        assertEquals(2, a.permAlone("aab"));
 //        permAlone("aaa") should return 0.
-        assertEquals(a.permAlone("aaa"), 0);
+        a = new NoRepeatsPlease();
+        assertEquals(0, a.permAlone("aaa"));
 //        permAlone("aabb") should return 8.
-        assertEquals(a.permAlone("aabb"), 8);
+        a = new NoRepeatsPlease();
+        assertEquals(8, a.permAlone("aabb"));
 //        permAlone("abcdefa") should return 3600.
-        assertEquals(a.permAlone("abcdefa"), 3600);
+        a = new NoRepeatsPlease();
+        assertEquals(3600, a.permAlone("abcdefa"));
 //        permAlone("abfdefa") should return 2640.
-        assertEquals(a.permAlone("abfdefa"), 2640);
+        a = new NoRepeatsPlease();
+        assertEquals(2640, a.permAlone("abfdefa"));
 //        permAlone("zzzzzzzz") should return 0.
-        assertEquals(a.permAlone("zzzzzzzz"), 0);
+        a = new NoRepeatsPlease();
+        assertEquals(0, a.permAlone("zzzzzzzz"));
 //        permAlone("a") should return 1.
-        assertEquals(a.permAlone("a"), 1);
+        a = new NoRepeatsPlease();
+        assertEquals(1, a.permAlone("a"));
 //        permAlone("aaab") should return 0.
-        assertEquals(a.permAlone("aaab"), 0);
+        a = new NoRepeatsPlease();
+        assertEquals(0, a.permAlone("aaab"));
 //        permAlone("aaabb") should return 12.
-        assertEquals(a.permAlone("aaabb"), 12);
+        a = new NoRepeatsPlease();
+        assertEquals(12, a.permAlone("aaabb"));
     }
 }
