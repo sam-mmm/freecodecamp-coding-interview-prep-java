@@ -29,12 +29,9 @@ public class NoRepeatsPlease {
         arr[index2] = tmp;
     }
 
-    //        function generate(int) {
     private void generate(int j, String arr[]) {
-//        if (int === 1) {
         if (j == 1) {
 //            // Make sure to join the characters as we create  the permutation arrays
-//            permutations.push(arr.join(""));
             permutations.add(Arrays.stream(arr).collect(Collectors.joining("")));
         } else {
             for (int i = 0; i != j; ++i) {
